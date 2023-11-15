@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router';
+import { Storage } from "@ionic/storage";
 
 import { IonicVue } from '@ionic/vue';
 
@@ -26,6 +27,12 @@ import './theme/variables.css';
 const app = createApp(App)
   .use(IonicVue)
   .use(router);
+
+const storage = new Storage();
+
+await storage.create();
+
+app.config.globalProperties.$storage = storage;
   
 router.isReady().then(() => {
   app.mount('#app');
