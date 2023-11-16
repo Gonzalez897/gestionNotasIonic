@@ -1,12 +1,14 @@
 import { createRouter, createWebHistory } from "@ionic/vue-router";
 import TabsPage from "../views/TabsPage.vue";
+import LoginView from "../views/LoginView.vue";
 import RegistroUsuario from "../views/RegistroUsuario.vue";
 import RegistroDocente from "../views/RegistroDocente.vue";
 import RegistroEstudiante from "../views/RegistroEstudiante.vue";
-import LoginView from "../views/LoginView.vue";
 import materiaView from "../views/materiaView.vue";
-import { Storage } from "@ionic/storage";
 import IngresoNotas from "../views/IngresoNotas.vue";
+import RecordatoriosView from '../views/RecordatoriosView.vue'
+import { Storage } from "@ionic/storage";
+
 
 const routes = [
   {
@@ -98,6 +100,21 @@ const routes = [
             next("/");
           }
         },
+      },
+      {
+        path: 'tab5',
+        component: RecordatoriosView,
+        beforeEnter: async (to, from, next) => {
+
+          let res = await sessionActiva();
+
+          if (res) {
+            next()
+          } else {
+            next('/')
+          }
+
+        }
       },
     ],
   },
