@@ -96,7 +96,7 @@ export default {
                 if (response.data.code == 200) {
 
                     this.estadoMensaje = true;
-                    this.mensaje = response.data;
+                    this.mensaje = response.data.data;
     
                     this.nuevoUsuario = {};
                 } else {
