@@ -15,12 +15,12 @@
 
         <ion-tab-button tab="tab3" href="/tabs/tab3">
           <ion-icon aria-hidden="true" :icon="ellipse" />
-          <ion-label>Tab 2</ion-label>
+          <ion-label>Ingreso de Notas</ion-label>
         </ion-tab-button>
 
         <ion-tab-button tab="tab4" href="/tabs/tab4">
           <ion-icon aria-hidden="true" :icon="square" />
-          <ion-label>Ingreso de Notas</ion-label>
+          <ion-label>Materias</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
