@@ -27,6 +27,10 @@
           <ion-icon aria-hidden="true" :icon="square" />
           <ion-label>Recordatorios</ion-label>
         </ion-tab-button>
+        <ion-tab-button tab="tab6" href="/tabs/tab6">
+          <ion-icon aria-hidden="true" :icon="triangle" />
+          <ion-label>Evaluaciones</ion-label>
+        </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
   </ion-page>
