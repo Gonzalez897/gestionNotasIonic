@@ -3,6 +3,7 @@ import TabsPage from '../views/TabsPage.vue'
 import RegistroUsuario from '../views/RegistroUsuario.vue'
 import LoginView from '../views/LoginView.vue'
 import { Storage } from "@ionic/storage";
+import IngresoNotas from '../views/IngresoNotas.vue'
 
 const routes = [
   {
@@ -80,6 +81,21 @@ const routes = [
       {
         path: 'tab3',
         component: () => import('@/views/Tab3Page.vue'),
+        beforeEnter: async (to, from, next) => {
+
+          let res = await sessionActiva();
+
+          if (res) {
+            next()
+          } else {
+            next('/')
+          }
+
+        }
+      },
+      {
+        path: 'tab4',
+        component: IngresoNotas,
         beforeEnter: async (to, from, next) => {
 
           let res = await sessionActiva();
