@@ -50,22 +50,6 @@ const routes = [{
             },
             {
                 path: 'tab1',
-                component: () =>
-                    import ('@/views/Tab3Page.vue'),
-                beforeEnter: async(to, from, next) => {
-
-                    let res = await sessionActiva();
-
-                    if (res) {
-                        next()
-                    } else {
-                        next('/')
-                    }
-
-                }
-            },
-            {
-                path: 'tab2',
                 component: RegistroDocente,
                 beforeEnter: async(to, from, next) => {
 
@@ -80,7 +64,7 @@ const routes = [{
                 }
             },
             {
-                path: 'tab3',
+                path: 'tab2',
                 component: RegistroEstudiante,
                 beforeEnter: async(to, from, next) => {
 
@@ -94,6 +78,21 @@ const routes = [{
 
                 }
             },
+            {
+                path: 'tab3',
+                component: IngresoNotas,
+                beforeEnter: async(to, from, next) => {
+
+                    let res = await sessionActiva();
+
+                    if (res) {
+                        next()
+                    } else {
+                        next('/')
+                    }
+
+                }
+            }
 
         ]
     }
