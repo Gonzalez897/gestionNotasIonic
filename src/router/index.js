@@ -2,6 +2,7 @@ import { createRouter, createWebHistory } from '@ionic/vue-router';
 import TabsPage from '../views/TabsPage.vue'
 import RegistroUsuario from '../views/RegistroUsuario.vue'
 import LoginView from '../views/LoginView.vue'
+import RecordatoriosView from '../views/RecordatoriosView.vue'
 import { Storage } from "@ionic/storage";
 
 const routes = [
@@ -91,7 +92,23 @@ const routes = [
           }
 
         }
-      }
+      },
+      {
+        path: 'tab4',
+        component: RecordatoriosView,
+        beforeEnter: async (to, from, next) => {
+
+          let res = await sessionActiva();
+
+          if (res) {
+            next()
+          } else {
+            next('/')
+          }
+
+        }
+      },
+      
     ]
   }
 ]
