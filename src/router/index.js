@@ -4,6 +4,7 @@ import RegistroUsuario from '../views/RegistroUsuario.vue'
 import RegistroDocente from '../views/RegistroDocente.vue'
 import RegistroEstudiante from '../views/RegistroEstudiante.vue'
 import LoginView from '../views/LoginView.vue'
+import materiaView from '../views/materiaView.vue'
 import { Storage } from "@ionic/storage";
 import IngresoNotas from '../views/IngresoNotas.vue'
 
@@ -91,11 +92,40 @@ const routes = [{
                         next('/')
                     }
 
-                }
-            }
+        }
+      },
+      {
+        path: 'tab4',
+        component: materiaView,
+        beforeEnter: async (to, from, next) => {
 
-        ]
-    }
+          let res = await sessionActiva();
+
+          if (res) {
+            next()
+          } else {
+            next('/')
+          }
+
+        }
+      },
+      // {
+      //   path: 'materiaView',
+      //   component: materiaView,
+      //   beforeEnter: async (to, from, next) => {
+
+      //     let res = await sessionActiva();
+
+      //     if (res) {
+      //       next()
+      //     } else {
+      //       next('/')
+      //     }
+
+      //   }
+      // }
+    ]
+  }
 ]
 
 async function sessionActiva() {
@@ -109,6 +139,8 @@ async function sessionActiva() {
     return (usuario) ? true : false;
 
 }
+
+
 
 const router = createRouter({
     history: createWebHistory(
