@@ -3,7 +3,6 @@
     <ion-tabs>
       <ion-router-outlet></ion-router-outlet>
       <ion-tab-bar slot="bottom">
-
         <ion-tab-button tab="tab1" href="/tabs/tab1">
           <ion-icon aria-hidden="true" :icon="square" />
           <ion-label>Registro Docente</ion-label>
@@ -24,12 +23,10 @@
           <ion-label>Materias</ion-label>
         </ion-tab-button>
 
-        <ion-tab-button tab="tab4" href="/tabs/tab4">
+        <ion-tab-button tab="tab5" href="/tabs/tab5">
           <ion-icon aria-hidden="true" :icon="square" />
-          <ion-label>recordatorios</ion-label>
+          <ion-label>Recordatorios</ion-label>
         </ion-tab-button>
-        
-
       </ion-tab-bar>
     </ion-tabs>
   </ion-page>

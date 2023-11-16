@@ -6,9 +6,8 @@ import RegistroDocente from "../views/RegistroDocente.vue";
 import RegistroEstudiante from "../views/RegistroEstudiante.vue";
 import materiaView from "../views/materiaView.vue";
 import IngresoNotas from "../views/IngresoNotas.vue";
-import RecordatoriosView from '../views/RecordatoriosView.vue'
+import RecordatoriosView from "../views/RecordatoriosView.vue";
 import { Storage } from "@ionic/storage";
-
 
 const routes = [
   {
@@ -102,19 +101,17 @@ const routes = [
         },
       },
       {
-        path: 'tab5',
+        path: "tab5",
         component: RecordatoriosView,
         beforeEnter: async (to, from, next) => {
-
           let res = await sessionActiva();
 
           if (res) {
-            next()
+            next();
           } else {
-            next('/')
+            next("/");
           }
-
-        }
+        },
       },
     ],
   },
