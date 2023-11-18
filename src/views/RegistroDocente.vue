@@ -3,9 +3,17 @@
         <ion-header>
             <ion-toolbar>
                 <ion-title>
-                    Registro de Docentes
+                    <ion-grid>
+                        <ion-row>
+                            <ion-col size="11">
+                                Registro de Docentes
+                            </ion-col>
+                            <ion-col size="1">
+                                <ion-button href="tabs/tab6">Regresar</ion-button>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
                 </ion-title>
-                <Toolbar></Toolbar>
             </ion-toolbar>
         </ion-header>
         <ion-content class="ion-padding">
@@ -105,7 +113,7 @@ import {
     IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader,
     IonCardTitle, IonCardSubtitle, IonCardContent, IonList, IonItemSliding, IonItemOptions,
     IonItemOption, IonIcon, IonItem, IonLabel, IonModal, IonButton, IonButtons, IonInput,
-    IonToast
+    IonToast, IonGrid, IonRow,IonCol
 } from "@ionic/vue";
 
 import Toolbar from './Toolbar.vue';
@@ -120,7 +128,7 @@ export default {
         IonPage, IonHeader, IonToolbar, IonTitle, IonContent, IonCard, IonCardHeader,
     IonCardTitle, IonCardSubtitle, IonCardContent, IonList, IonItemSliding, IonItemOptions,
     IonItemOption, IonIcon, IonItem, IonLabel, IonModal, IonButton, IonButtons, IonInput,
-    IonToast, Toolbar
+    IonToast, Toolbar, IonGrid, IonRow,IonCol
     },
     data() {
         return {

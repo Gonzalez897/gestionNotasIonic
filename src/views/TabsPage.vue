@@ -17,13 +17,19 @@
           <ion-icon aria-hidden="true" :icon="square" />
           <ion-label>Tab 3</ion-label>
         </ion-tab-button>
-        <ion-tab-button tab="tab4" href="/tabs/tab4">
+
+      <!--  <ion-tab-button tab="tab4" href="/tabs/tab4">
           <ion-icon aria-hidden="true" :icon="square" />
           <ion-label>Registro Docente</ion-label>
         </ion-tab-button>
         <ion-tab-button tab="tab5" href="/tabs/tab5">
           <ion-icon aria-hidden="true" :icon="square" />
           <ion-label>Registro Estudiantes</ion-label>
+        </ion-tab-button>-->
+        
+        <ion-tab-button tab="tab6" href="/tabs/tab6">
+          <ion-icon aria-hidden="true" :icon="square" />
+          <ion-label>Vista Registros</ion-label>
         </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
