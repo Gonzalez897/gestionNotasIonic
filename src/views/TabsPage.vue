@@ -37,6 +37,11 @@
           <ion-icon aria-hidden="true" :icon="triangle" />
           <ion-label>Visualizacion</ion-label>
         </ion-tab-button>
+
+        <ion-tab-button tab="tab9" href="/tabs/tab9">
+          <ion-icon aria-hidden="true" :icon="triangle" />
+          <ion-label>Historial</ion-label>
+        </ion-tab-button>
       </ion-tab-bar>
     </ion-tabs>
   </ion-page>

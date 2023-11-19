@@ -3,7 +3,6 @@
     <ion-header>
       <ion-toolbar>
         <ion-title>Ingrese Materia y Docente</ion-title>
-        <Toolbar></Toolbar>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -28,13 +27,16 @@
         <ion-button expand="block" @click="guardarFormulario()"
           >Guardar</ion-button
         >
+
+        <ion-button expand="block" router-link="/tabs/tab8"
+          >Ir a Inscripción de Materias</ion-button
+        >
       </ion-list>
     </ion-content>
   </ion-page>
 </template>
 
 <script>
-import Toolbar from "./Toolbar.vue";
 import {
   IonPage,
   IonHeader,
@@ -47,6 +49,7 @@ import {
   IonButton,
   IonTitle,
   IonSelect,
+  IonSelectOption,
 } from "@ionic/vue";
 import axios from "axios";
 
@@ -64,7 +67,7 @@ export default {
     IonButton,
     IonTitle,
     IonSelect,
-    Toolbar,
+    IonSelectOption,
   },
   data() {
     return {
