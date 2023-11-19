@@ -2,7 +2,11 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
         <ion-title>Historial de Notas</ion-title>
+        <Toolbar></Toolbar>
       </ion-toolbar>
       <!-- <Toolbar></Toolbar> -->
     </ion-header>
@@ -120,8 +124,9 @@ import {
   IonToast,
   IonRow,
   IonCol,
+  IonBackButton,
 } from "@ionic/vue";
-
+import Toolbar from "./Toolbar.vue";
 import { create, eye, trash } from "ionicons/icons";
 import axios from "axios";
 
@@ -157,6 +162,8 @@ export default {
     IonToast,
     IonRow,
     IonCol,
+    IonBackButton,
+    Toolbar,
   },
 
   data() {

@@ -2,6 +2,9 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
         <ion-title>Ingreso de notas</ion-title>
         <Toolbar></Toolbar>
       </ion-toolbar>
@@ -96,7 +99,7 @@
               @click="ingresarNota"
             >
               <ion-icon slot="start" :icon="checkmarkOutline"></ion-icon>
-              Guardar
+              <b>Guardar</b>
             </ion-button>
           </ion-col>
         </ion-row>
@@ -130,6 +133,8 @@ import {
   IonSelect,
   IonSelectOption,
   IonToast,
+  IonButtons,
+  IonBackButton,
 } from "@ionic/vue";
 export default {
   name: "IngresoNotas",
@@ -149,6 +154,8 @@ export default {
     IonSelect,
     IonSelectOption,
     IonToast,
+    IonButtons,
+    IonBackButton,
   },
   data() {
     return {

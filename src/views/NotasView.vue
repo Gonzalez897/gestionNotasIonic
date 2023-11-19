@@ -2,7 +2,11 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
         <ion-title>Visualizacion de Notas</ion-title>
+        <Toolbar></Toolbar>
       </ion-toolbar>
       <!-- <Toolbar></Toolbar> -->
     </ion-header>
@@ -88,11 +92,62 @@
         :message="MsgEliminar"
         :duration="5000"
       ></ion-toast>
+
+      <ion-card>
+        <ion-card-header>
+          <ion-card-title>alertas</ion-card-title>
+          <ion-card-subtitle>Listado</ion-card-subtitle>
+        </ion-card-header>
+        <ion-card-content>
+          <template v-if="listaAler.length > 0">
+            <ion-list>
+              <ion-item-sliding v-for="(val, i) in listaAler" :key="i">
+                <ion-item-options side="start">
+                  <ion-item-option color="success">
+                    <ion-icon slot="icon-only" :icon="archive"></ion-icon>
+                  </ion-item-option>
+                </ion-item-options>
+
+                <ion-item>
+                  <p class="pA">
+                    recordatorio:
+                    <br /><br />
+                    <ion-label>{{ val.descripcion }}</ion-label>
+                    <br />
+                    fechaFinalizacion:
+                    <br />
+                    <br />
+                    <ion-label>{{ val.fechaRecordatorio }}</ion-label>
+                  </p>
+                </ion-item>
+
+                <ion-item-options side="end">
+                  <ion-item-option
+                    color="danger"
+                    @click="eliminarAlerta(val.idAlertas)"
+                  >
+                    <ion-icon slot="icon-only" :icon="trash"></ion-icon>
+                  </ion-item-option>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-list>
+          </template>
+          <p v-else>no hay alertas</p>
+        </ion-card-content>
+        <ion-toast
+          :is-open="eliminarAl"
+          color="red"
+          :message="respuestaEliminarAL"
+          :duration="5000"
+          @didDismiss="eliminarAL = false"
+        ></ion-toast>
+      </ion-card>
     </ion-content>
   </ion-page>
 </template>
 
 <script>
+import Toolbar from "./Toolbar.vue";
 import {
   IonPage,
   IonHeader,
@@ -120,8 +175,8 @@ import {
   IonToast,
   IonRow,
   IonCol,
+  IonBackButton,
 } from "@ionic/vue";
-
 import { create, eye, trash } from "ionicons/icons";
 import axios from "axios";
 
@@ -157,6 +212,8 @@ export default {
     IonToast,
     IonRow,
     IonCol,
+    IonBackButton,
+    Toolbar,
   },
 
   data() {
@@ -170,6 +227,10 @@ export default {
       notas: [],
       notas2: {},
       config: {},
+      trash,
+      listaAler: [],
+      eliminarAL: false,
+      respuestaEliminarAL: "",
     };
   },
 
@@ -222,11 +283,41 @@ export default {
         })
         .catch((error) => console.log("hubo un error " + error));
     },
+    getAlertas() {
+      axios
+        .get("http://127.0.0.1:8000/api/alertas/select")
+
+        .then((response) => {
+          console.log(response);
+
+          this.listaAler = response.data.data;
+        })
+        .catch((error) => console.log("ha ocurrido un error" + error));
+    },
+    eliminarAlerta(idAlertas) {
+      axios
+        .delete(`http://127.0.0.1:8000/api/alertas/delete/${idAlertas}`)
+        .then((response) => {
+          console.log(response);
+
+          this.respuestaEliminarAL = response.data.data;
+
+          this.eliminarAL = true;
+
+          this.respuestaEliminarAL = response.data.data;
+
+          this.getAlertas();
+        })
+        .catch((error) => console.log("ha ocurrido un error" + error));
+    },
 
     ionViewWillEnter() {
       // this.getToken()
       this.getNotas();
     },
+  },
+  mounted() {
+    this.getAlertas();
   },
 };
 </script>

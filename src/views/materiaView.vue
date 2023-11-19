@@ -2,7 +2,8 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
-        <ion-title>Ingrese Materia y Docente</ion-title>
+        <ion-title>Materia/Inscripcion</ion-title>
+        <Toolbar></Toolbar>
       </ion-toolbar>
     </ion-header>
     <ion-content :fullscreen="true">
@@ -13,8 +14,7 @@
         </ion-item>
         <ion-item
           ><br />
-          <ion-input position="floating">Docente</ion-input>
-          <ion-select v-model="materia.idProfesores">
+          <ion-select label="Profesores" v-model="materia.idProfesores">
             <ion-select-option
               v-for="(x, i) in profesor"
               :key="i"
@@ -24,12 +24,22 @@
             </ion-select-option>
           </ion-select>
         </ion-item>
-        <ion-button expand="block" @click="guardarFormulario()"
-          >Guardar</ion-button
+        <br />
+        <ion-button
+          shape="round"
+          color="warning"
+          expand="block"
+          @click="guardarFormulario()"
+          ><b>Guardar</b></ion-button
         >
+        <br />
 
-        <ion-button expand="block" router-link="/tabs/tab8"
-          >Ir a Inscripción de Materias</ion-button
+        <ion-button
+          shape="round"
+          color="success"
+          expand="block"
+          router-link="/tabs/tab8"
+          ><b>Ir a Inscripción de Materias</b></ion-button
         >
       </ion-list>
     </ion-content>
@@ -37,6 +47,7 @@
 </template>
 
 <script>
+import Toolbar from "./Toolbar.vue";
 import {
   IonPage,
   IonHeader,
@@ -68,6 +79,7 @@ export default {
     IonTitle,
     IonSelect,
     IonSelectOption,
+    Toolbar,
   },
   data() {
     return {

@@ -2,6 +2,9 @@
   <ion-page>
     <ion-header>
       <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button></ion-back-button>
+        </ion-buttons>
         <ion-title>Evaluaciones</ion-title>
         <Toolbar></Toolbar>
       </ion-toolbar>
@@ -161,6 +164,8 @@ import {
   IonItemOptions,
   IonItemOption,
   IonToast,
+  IonButtons,
+  IonBackButton,
 } from "@ionic/vue";
 
 import { add, trash } from "ionicons/icons";
@@ -188,6 +193,8 @@ export default {
     IonItemOptions,
     IonItemOption,
     IonToast,
+    IonButtons,
+    IonBackButton,
   },
   data() {
     return {

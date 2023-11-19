@@ -3,7 +3,9 @@ import TabsPage from "../views/TabsPage.vue";
 import LoginView from "../views/LoginView.vue";
 import RegistroUsuario from "../views/RegistroUsuario.vue";
 import RegistroDocente from "../views/RegistroDocente.vue";
+import Registro from "../views/RegistroView.vue";
 import RegistroEstudiante from "../views/RegistroEstudiante.vue";
+import RegistroNotas from "../views/RegistroNotas.vue";
 import materiaView from "../views/materiaView.vue";
 import inscripcionMateria from "../views/inscripcionMateria.vue";
 import IngresoNotas from "../views/IngresoNotas.vue";
@@ -11,6 +13,7 @@ import NotasView from "../views/NotasView.vue";
 import EvaluacionesView from "../views/EvaluacionesView.vue";
 import RecordatoriosView from "../views/RecordatoriosView.vue";
 import historial from "../views/HistorialNotas.vue";
+import inicio from "../views/InicioView.vue";
 import { Storage } from "@ionic/storage";
 
 const routes = [
@@ -54,7 +57,7 @@ const routes = [
       },
       {
         path: "tab1",
-        component: RegistroDocente,
+        component: Registro,
         beforeEnter: async (to, from, next) => {
           let res = await sessionActiva();
 
@@ -67,7 +70,7 @@ const routes = [
       },
       {
         path: "tab2",
-        component: RegistroEstudiante,
+        component: RegistroNotas,
         beforeEnter: async (to, from, next) => {
           let res = await sessionActiva();
 
@@ -159,6 +162,45 @@ const routes = [
       {
         path: "tab9",
         component: historial,
+        beforeEnter: async (to, from, next) => {
+          let res = await sessionActiva();
+
+          if (res) {
+            next();
+          } else {
+            next("/");
+          }
+        },
+      },
+      {
+        path: "tab10",
+        component: RegistroDocente,
+        beforeEnter: async (to, from, next) => {
+          let res = await sessionActiva();
+
+          if (res) {
+            next();
+          } else {
+            next("/");
+          }
+        },
+      },
+      {
+        path: "tab11",
+        component: RegistroEstudiante,
+        beforeEnter: async (to, from, next) => {
+          let res = await sessionActiva();
+
+          if (res) {
+            next();
+          } else {
+            next("/");
+          }
+        },
+      },
+      {
+        path: "tab12",
+        component: inicio,
         beforeEnter: async (to, from, next) => {
           let res = await sessionActiva();
 

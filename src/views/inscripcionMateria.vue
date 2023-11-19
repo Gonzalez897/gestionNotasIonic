@@ -51,7 +51,11 @@
           <br />
         </ion-item>
 
-        <ion-button expand="block" @click="agregarInscripcion"
+        <ion-button
+          shape="round"
+          color="warning"
+          expand="block"
+          @click="agregarInscripcion"
           >Inscribir</ion-button
         >
       </ion-list>
