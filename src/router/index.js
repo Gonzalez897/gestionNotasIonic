@@ -4,6 +4,7 @@ import RegistroUsuario from '../views/RegistroUsuario.vue'
 import RegistroDocente from '../views/RegistroDocente.vue'
 import RegistroView from '../views/RegistroView.vue'
 import RegistroEstudiante from '../views/RegistroEstudiante.vue'
+import EvaluacionesView from '../views/EvaluacionesView.vue'
 import LoginView from '../views/LoginView.vue'
 import { Storage } from "@ionic/storage";
 
@@ -127,8 +128,8 @@ const routes = [{
                 }
             },
             {
-                path: 'tab6',
-                component: RegistroView,
+                path: 'tabs4',
+                component: EvaluacionesView,
                 beforeEnter: async(to, from, next) => {
 
                     let res = await sessionActiva();
@@ -141,9 +142,27 @@ const routes = [{
 
                 }
             },
-
         ]
     }
+}
+}, {
+    path: 'tab6',
+    component: RegistroView,
+    beforeEnter: async(to, from, next) => {
+
+        let res = await sessionActiva();
+
+        if (res) {
+            next()
+        } else {
+            next('/')
+        }
+
+    }
+},
+
+]
+}
 ]
 
 async function sessionActiva() {
