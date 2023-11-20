@@ -10,7 +10,7 @@
       <ion-card>
         <ion-card-header>
           <ion-card-title>Bienvenido Al sistema!</ion-card-title>
-          <ion-card-subtitle>USUARIO</ion-card-subtitle>
+          <ion-card-subtitles>USUARIO: {{ this.user }}</ion-card-subtitles>
         </ion-card-header>
         <ion-card-content>
           <img
@@ -50,6 +50,11 @@ import {
 } from "@ionic/vue";
 export default {
   name: "InicioView",
+  data() {
+    return {
+      user: "",
+    };
+  },
   components: {
     IonPage,
     IonContent,
@@ -73,6 +78,20 @@ export default {
     IonCardTitle,
     IonCardSubtitle,
     IonCardContent,
+  },
+  methods: {
+    async storage() {
+      let datos = await this.$storage.get("user");
+      this.user = datos;
+
+      console.log(this.user);
+    },
+  },
+  mounted() {
+    this.storage();
+  },
+  ionViewWillEnter() {
+    this.storage();
   },
 };
 </script>

@@ -52,12 +52,8 @@ const routes = [
     component: TabsPage,
     children: [
       {
-        path: "",
-        redirect: "/tabs/tab1",
-      },
-      {
         path: "tab1",
-        component: Registro,
+        component: inicio,
         beforeEnter: async (to, from, next) => {
           let res = await sessionActiva();
 
@@ -200,7 +196,7 @@ const routes = [
       },
       {
         path: "tab12",
-        component: inicio,
+        component: Registro,
         beforeEnter: async (to, from, next) => {
           let res = await sessionActiva();
 

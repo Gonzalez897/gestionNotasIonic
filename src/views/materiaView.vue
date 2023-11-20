@@ -42,6 +42,13 @@
           ><b>Ir a Inscripción de Materias</b></ion-button
         >
       </ion-list>
+      <ion-toast
+        color="success"
+        :is-open="agregarMensaje"
+        :message="respuestaAgregar"
+        :duration="3000"
+        @didDismiss="agregarMensaje = false"
+      ></ion-toast>
     </ion-content>
   </ion-page>
 </template>
@@ -61,6 +68,7 @@ import {
   IonTitle,
   IonSelect,
   IonSelectOption,
+  IonToast,
 } from "@ionic/vue";
 import axios from "axios";
 
@@ -80,6 +88,7 @@ export default {
     IonSelect,
     IonSelectOption,
     Toolbar,
+    IonToast,
   },
   data() {
     return {
@@ -88,6 +97,8 @@ export default {
         // idProfesor:''
       },
       profesor: [],
+      agregarMensaje: false,
+      respuestaAgregar: "",
     };
   },
   methods: {
@@ -96,9 +107,13 @@ export default {
       axios
         .post("http://127.0.0.1:8000/api/materias/store", this.materia)
         .then((response) => {
-          alert("se ha ingresado la materia");
-          this.materia.nombreMateria = "";
-          this.materia.idProfesores = "";
+          console.log(response.data.data);
+          if (response.data.code == 200) {
+            this.agregarMensaje = true;
+            this.respuestaAgregar = response.data.data;
+            this.materia.nombreMateria = "";
+            this.materia.idProfesores = "";
+          }
         })
         .catch((error) =>
           console.log("Hubo un error al tratar de ingresar la materia " + error)
@@ -111,14 +126,12 @@ export default {
       // this.docente = '';
     },
     guardarDocente() {
-      axios
-        .get("http://127.0.0.1:8000/api/profe/select")
-        .then((response) => {
-          console.log(response.data.data);
-          if (response.data.code == 200) {
-            this.profesor = response.data.data;
-          }
-        });
+      axios.get("http://127.0.0.1:8000/api/profe/select").then((response) => {
+        console.log(response.data.data);
+        if (response.data.code == 200) {
+          this.profesor = response.data.data;
+        }
+      });
     },
   },
   mounted() {

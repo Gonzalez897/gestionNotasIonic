@@ -70,7 +70,7 @@
           <ion-toast
             :is-open="ingresarM"
             @diDismiss="ingresarM = false"
-            color="green"
+            color="success"
             :duration="5000"
             :message="ingresarR"
           ></ion-toast>
@@ -208,14 +208,14 @@
         </ion-content>
         <ion-toast
           :is-open="eliminarMensaje"
-          color="red"
+          color="danger"
           :message="respuestaEliminar"
           :duration="5000"
           @didDismiss="eliminarMensaje = false"
         ></ion-toast>
         <ion-toast
           :is-open="actualizarMensaje"
-          color="red"
+          color="primary"
           :message="respuestaActualizar"
           :duration="5000"
           @didDismiss="actualizarMensaje = false"
@@ -286,7 +286,7 @@
         <ion-toast
           :is-open="ingresarAR"
           @diDismiss="ingresarAR = false"
-          color="green"
+          color="success"
           :duration="5000"
           :message="ingresarA"
         ></ion-toast>
@@ -407,6 +407,7 @@ export default {
         .then((response) => {
           console.log(response.data.data);
           this.inscripcion = response.data.data;
+          this.nombreMateria = "";
         })
         .catch((error) => console.log("ha ocurrido un error" + error));
     },
@@ -422,6 +423,9 @@ export default {
           this.ingresarM = true;
 
           this.ingresarR = response.data.data;
+
+          this.getRecordatorios();
+          this.obtenerRecordatorios();
         })
         .catch((error) => console.log("ha ocurrido un error" + error));
     },
@@ -515,6 +519,11 @@ export default {
     },
   },
   mounted() {
+    this.obtenerInscripcion();
+    this.getRecordatorios();
+    this.obtenerRecordatorios();
+  },
+  ionViewWillEnter() {
     this.obtenerInscripcion();
     this.getRecordatorios();
     this.obtenerRecordatorios();

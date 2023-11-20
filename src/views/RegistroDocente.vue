@@ -39,15 +39,6 @@
             @click="agregarProfesores"
             >Guardar</ion-button
           >
-          <ion-toast
-            :is-open="agregarMensaje"
-            color="red"
-            :message="respuestaAgregar"
-            :duration="5000"
-            @didDismiss="agregarMensaje = false"
-            position="bottom"
-            position-anchor="header"
-          ></ion-toast>
         </ion-card-header>
         <ion-card-content>
           <ion-card>
@@ -58,10 +49,7 @@
             <ion-card-content>
               <template v-if="profesor.length > 0">
                 <ion-list>
-                  <ion-item-sliding
-                    v-for="(profesor, i) in profesor"
-                    :key="i"
-                  >
+                  <ion-item-sliding v-for="(profesor, i) in profesor" :key="i">
                     <ion-item>
                       ID:
                       <ion-label>{{ profesor.idProfesores }}</ion-label> Name:
@@ -155,22 +143,29 @@
               >
             </ion-content>
           </ion-modal>
-          <ion-toast
-            :is-open="eliminarMensaje"
-            color="red"
-            :message="respuestaEliminar"
-            :duration="5000"
-            @didDismiss="eliminarMensaje = false"
-          ></ion-toast>
-          <ion-toast
-            :is-open="actualizarMensaje"
-            color="red"
-            :message="respuestaActualizar"
-            :duration="5000"
-            @didDismiss="actualizarMensaje = false"
-          ></ion-toast>
         </ion-card-content>
       </ion-card>
+      <ion-toast
+        color="success"
+        :is-open="agregarMensaje"
+        :message="respuestaAgregar"
+        :duration="3000"
+        @didDismiss="agregarMensaje = false"
+      ></ion-toast>
+      <ion-toast
+        :is-open="eliminarMensaje"
+        color="danger"
+        :message="respuestaEliminar"
+        :duration="3000"
+        @didDismiss="eliminarMensaje = false"
+      ></ion-toast>
+      <ion-toast
+        :is-open="actualizarMensaje"
+        color="primary"
+        :message="respuestaActualizar"
+        :duration="3000"
+        @didDismiss="actualizarMensaje = false"
+      ></ion-toast>
     </ion-content>
   </ion-page>
 </template>

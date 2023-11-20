@@ -41,7 +41,7 @@
           >
           <ion-toast
             :is-open="agregarMensaje"
-            color="red"
+            color="success"
             :message="respuestaAgregar"
             :duration="5000"
             @didDismiss="agregarMensaje = false"
@@ -158,14 +158,14 @@
           </ion-modal>
           <ion-toast
             :is-open="eliminarMensaje"
-            color="red"
+            color="danger"
             :message="respuestaEliminar"
             :duration="5000"
             @didDismiss="eliminarMensaje = false"
           ></ion-toast>
           <ion-toast
             :is-open="actualizarMensaje"
-            color="red"
+            color="primary"
             :message="respuestaActualizar"
             :duration="5000"
             @didDismiss="actualizarMensaje = false"
