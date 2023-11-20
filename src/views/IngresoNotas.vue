@@ -198,6 +198,7 @@ export default {
       this.valorNota = "";
       this.carnet = "";
       this.idMaterias = "";
+      this.data1 = {};
 
       this.mostrarPorcentaje = false;
       this.porcent = "";

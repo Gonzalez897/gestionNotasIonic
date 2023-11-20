@@ -282,6 +282,7 @@ export default {
           this.respuestaAgregar = response.data.data;
           this.agregarMensaje = true;
           this.estudiante = {};
+          this.getEstudiantes();
         })
         .catch((error) => console.log("Hubo un error " + error));
     },

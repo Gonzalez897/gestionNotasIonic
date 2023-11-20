@@ -63,7 +63,7 @@
         :duration="2500"
         :message="messagesToast"
         :is-open="stateToast"
-        @didDimiss="stateToast = false"
+        @didDismiss="stateToast = false"
         :icon="informationCircleOutline"
       ></ion-toast>
     </ion-content>

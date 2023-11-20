@@ -94,11 +94,11 @@ export default {
     guardarFormulario() {
       // Aquí puedes realizar acciones con los datos ingresados, como enviarlos a un servidor o guardarlos localmente.
       axios
-        .post("http://127.0.0.1:8000/api/Materia/store", this.materia)
+        .post("http://127.0.0.1:8000/api/materias/store", this.materia)
         .then((response) => {
           alert("se ha ingresado la materia");
           this.materia.nombreMateria = "";
-          this.materia.idProfesor = "";
+          this.materia.idProfesores = "";
         })
         .catch((error) =>
           console.log("Hubo un error al tratar de ingresar la materia " + error)
@@ -112,7 +112,7 @@ export default {
     },
     guardarDocente() {
       axios
-        .get("http://127.0.0.1:8000/api/profesores/select")
+        .get("http://127.0.0.1:8000/api/profe/select")
         .then((response) => {
           console.log(response.data.data);
           if (response.data.code == 200) {

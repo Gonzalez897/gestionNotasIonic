@@ -18,19 +18,14 @@
               <ion-item>
                 <ion-label>Carnet: {{ notas.carnet }}</ion-label>
                 <ion-label>Nombre :{{ notas.nombreEstudiante }}</ion-label>
+                <ion-label>Pormedio: {{ notas.Promedio }}</ion-label>
               </ion-item>
 
               <ion-item-options side="end">
-                <ion-item-option
-                  color="primary"
-                  @click="getNotas1(notas.idNotas, 1)"
-                >
+                <ion-item-option color="primary" @click="getNotas1(notas.idNotas, 1)">
                   <ion-icon slot="icon-only" :icon="eye"></ion-icon>
                 </ion-item-option>
-                <ion-item-option
-                  color="danger"
-                  @click="eliminarNotas(notas.idNotas)"
-                >
+                <ion-item-option color="danger" @click="eliminarNotas(notas.idNotas)">
                   <ion-icon slot="icon-only" :icon="trash"></ion-icon>
                 </ion-item-option>
               </ion-item-options>
@@ -49,7 +44,7 @@
           </ion-toolbar>
         </ion-header>
         <ion-content class="ion-padding">
-          <ion-table>
+          <ion-grid>
             <ion-row>
               <ion-col>Nota</ion-col>
               <ion-col>{{ notas.nota }}</ion-col>
@@ -82,16 +77,12 @@
               <ion-col>Nombre de la Materia</ion-col>
               <ion-col>{{ notas.nombreMateria }}</ion-col>
             </ion-row>
-          </ion-table>
+          </ion-grid>
         </ion-content>
       </ion-modal>
 
-      <ion-toast
-        :is-open="btEliminar"
-        @didDismiss="btEliminar = false"
-        :message="MsgEliminar"
-        :duration="5000"
-      ></ion-toast>
+      <ion-toast :is-open="btEliminar" @didDismiss="btEliminar = false" :message="MsgEliminar"
+        :duration="5000"></ion-toast>
     </ion-content>
   </ion-page>
 </template>
@@ -122,6 +113,7 @@ import {
   IonButtons,
   IonInput,
   IonToast,
+  IonGrid,
   IonRow,
   IonCol,
   IonBackButton,
@@ -160,6 +152,7 @@ export default {
     IonButtons,
     IonInput,
     IonToast,
+    IonGrid,
     IonRow,
     IonCol,
     IonBackButton,
@@ -195,7 +188,7 @@ export default {
 
     getNotas() {
       axios
-        .get("http://localhost:8000/api/notas/select", this.config)
+        .get("http://localhost:8000/api/historial/select", this.config)
         .then((response) => {
           this.notas2 = response.data.data;
           console.log(response.data.data);
@@ -209,7 +202,7 @@ export default {
       }
 
       axios
-        .get(`http://localhost:8000/api/notas/find/${idNotas}`, this.config)
+        .get(`http://localhost:8000/api/historial/find/${idNotas}`, this.config)
         .then((response) => {
           this.notas = response.data.data;
           console.log(response.data.data);

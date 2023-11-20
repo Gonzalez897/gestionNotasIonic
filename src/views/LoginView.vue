@@ -28,7 +28,7 @@
                     </ion-col>
                 </ion-row>
             </ion-grid>
-            <ion-toast :duration="2500" :message="mensaje" :is-open="estadoMensaje" @didDimiss="estadoMensaje = false"
+            <ion-toast :duration="2500" :message="mensaje" :is-open="estadoMensaje" @didDismiss="estadoMensaje = false"
                 :icon="informationCircleOutline"></ion-toast>
         </ion-content>
     </ion-page>
@@ -69,6 +69,8 @@ export default {
             axios.post('http://localhost:8000/api/loginUsuario', this.usuario)
                 .then(response => {
 
+                    console.log(response);
+
                     if (response.status == 200) {
 
                         this.estadoMensaje = true;
@@ -88,7 +90,11 @@ export default {
                 .catch(error => {
                     this.estadoMensaje = true;
 
-                    if (error.response.status == 401) {
+                    if (error.response.status == 400) {
+
+                        this.mensaje = "Debe completar todos los campos para iniciar sesion";
+                        
+                    } else if (error.response.status == 401) {
 
                         this.mensaje = error.response.data.data;
 

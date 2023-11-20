@@ -56,10 +56,10 @@
               <ion-card-subtitle>Listado</ion-card-subtitle>
             </ion-card-header>
             <ion-card-content>
-              <template v-if="datosProfesor.length > 0">
+              <template v-if="profesor.length > 0">
                 <ion-list>
                   <ion-item-sliding
-                    v-for="(profesor, i) in datosProfesor"
+                    v-for="(profesor, i) in profesor"
                     :key="i"
                   >
                     <ion-item>
@@ -273,7 +273,7 @@ export default {
       this.getProfesores();
     },
     agregarProfesores() {
-      console.log(this.config);
+      console.log(this.datosProfesor);
       axios
         .post(
           "http://localhost:8000/api/profe/store",
@@ -285,6 +285,7 @@ export default {
           this.respuestaAgregar = response.data.data;
           this.agregarMensaje = true;
           this.datosProfesor = {};
+          this.getProfesores();
         })
         .catch((error) => console.log("Hubo un error " + error));
     },
@@ -292,7 +293,7 @@ export default {
       axios
         .get("http://localhost:8000/api/profe/select", this.config)
         .then((response) => {
-          this.datosProfesor = response.data.data;
+          this.profesor = response.data.data;
           console.log(response.data.data);
         })
         .catch((error) => "Hubo un error " + error);

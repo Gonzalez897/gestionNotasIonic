@@ -254,8 +254,10 @@ export default {
           `http://localhost:8000/api/evaluaciones/idInscripcion/${this.carnet}/${idMaterias}`
         )
         .then((response) => {
+          console.log(response);
           this.idInscripcion = response.data.data[0].idInscripcion;
           this.nombreMateria = response.data.data[0].nombreMateria;
+          console.log(this.idInscripcion);
         })
         .catch((error) => {
           if (error.response.status == 404) {
@@ -313,15 +315,18 @@ export default {
             }
 
             porcentajeGlobal = porcentajeMaterias + Number(this.porcentaje);
+            porcentajesPractico = porcentajesPractico + Number(this.porcentaje);
+            porcentajesTeorico = porcentajesTeorico + Number(this.porcentaje);
 
             if (porcentajeGlobal > 100) {
               alert("LLego al limite");
             } else {
               if (this.nombreTipo == "Practico") {
-                if (porcentajesPractico == 80) {
+
+                if (porcentajesPractico > 80) {
                   alert("No se puede ingresar un valor mayor al 80%");
                 } else if (this.porcentaje > 80) {
-                  alert("No se puede ingresar un valor mayor al 80%");
+                  alert("No se pasar el limite del 80%");
                 } else {
                   let evaluacion = {
                     idInscripcion: this.idInscripcion,
@@ -342,7 +347,7 @@ export default {
                   this.porcentaje = 0;
                 }
               } else {
-                if (porcentajesTeorico == 20) {
+                if (porcentajesTeorico > 20) {
                   alert("No se puede ingresar un valor mayor al 20%");
                 } else if (this.porcentaje > 20) {
                   alert("No se puede ingresar un valor mayor al 20%");
@@ -438,6 +443,8 @@ export default {
 
             this.listEvaluaciones.push(evaluacion);
 
+            this.agregarEvalus = true;
+
             this.carnet = "";
             this.idInscripcion = "";
             this.idMaterias = "";
@@ -445,9 +452,9 @@ export default {
             this.nombreEvaluacion = "";
             this.porcentaje = 0;
           }
-
-          this.agregarEvalus = true;
         }
+
+        console.log(this.listEvaluaciones);
       }
     },
 
@@ -464,6 +471,8 @@ export default {
             tipoEvaluacion: tipoEvaluacion,
             porcentaje: porcentaje,
           };
+
+          console.log(datosEvalu);
 
           axios
             .post("http://localhost:8000/api/evaluaciones/ingreso", datosEvalu)

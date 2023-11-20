@@ -48,7 +48,7 @@
                     </ion-col>
                 </ion-row>
             </ion-grid>
-            <ion-toast :duration="2500" :message="mensaje" :is-open="estadoMensaje" @didDimiss="estadoMensaje = false"
+            <ion-toast :duration="2500" :message="mensaje" :is-open="estadoMensaje" @didDismiss="estadoMensaje = false"
             :icon="informationCircleOutline"></ion-toast>
         </ion-content>
     </ion-page>
