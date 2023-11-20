@@ -18,7 +18,8 @@
               <ion-item>
                 <ion-label>Carnet: {{ notas.carnet }}</ion-label>
                 <ion-label>Nombre :{{ notas.nombreEstudiante }}</ion-label>
-                <ion-label>Pormedio: {{ notas.Promedio }}</ion-label>
+                <ion-label>Materia :{{ notas.nombreMateria }}</ion-label>
+                <ion-label>Promedio: {{ notas.Promedio }}</ion-label>
               </ion-item>
 
               <ion-item-options side="end">
